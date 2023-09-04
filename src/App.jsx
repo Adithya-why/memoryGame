@@ -13,11 +13,26 @@ function App() {
   useEffect(()=>{
     
       async function foo(){
-
-        let linkarray = [];
-        let li = await fetch(`https://api.giphy.com/v1/gifs/random?api_key=${key}&tag=&rating=g`,{mode:"cors"});
+        let pokemon = ['pikachu','squirtle','charmander','bulbasaur'];
+        let linkobj = {};
+        //to get gif
+        for(let i=0;i<4;i++){
+        let li = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${pokemon[i]}`,{mode:"cors"});
         let lj = await li.json();
-        console.log(lj.data.images.downsized.url);
+        //console.log(lj.data.images.original.url);
+
+
+
+        //to get description
+        let pkd = await fetch(`https://pokeapi.co/api/v2/characteristic/8/`);
+        let pk = await pkd.json();
+        console.log(pk);
+        linkobj[pokemon[i]] = lj.data.images.original.url;
+        }
+
+        setLinks(linkobj)
+
+        
 
       }
 
