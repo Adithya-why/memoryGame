@@ -4,7 +4,14 @@ import './App.css'
 import { useEffect } from 'react'
 import { useState } from 'react'
 
+import { Pokedex } from 'pokeapi-js-wrapper'
+
+
 const key = import.meta.env.VITE_GIPHY_KEY;
+//pokemopn api stuff
+
+const P = new Pokedex;
+
 
 function App() {
   
@@ -17,17 +24,18 @@ function App() {
         let linkobj = {};
         //to get gif
         for(let i=0;i<4;i++){
-        let li = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${pokemon[i]}`,{mode:"cors"});
-        let lj = await li.json();
+        //let li = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${pokemon[i]}`,{mode:"cors"});
+        //let lj = await li.json();
         //console.log(lj.data.images.original.url);
+        //to get description and photos
 
+        
+          let x = await P.getPokemonByName(pokemon[i]);
+          
 
+          linkobj = {...linkobj, [i] : {'name': x.name,'abilities' : x.abilities,'url': x.sprites.front_default}};
 
-        //to get description
-        let pkd = await fetch(`https://pokeapi.co/api/v2/characteristic/8/`);
-        let pk = await pkd.json();
-        console.log(pk);
-        linkobj[pokemon[i]] = lj.data.images.original.url;
+       
         }
 
         setLinks(linkobj)
