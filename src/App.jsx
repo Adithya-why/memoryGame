@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 import { Pokedex } from 'pokeapi-js-wrapper'
 
-
+const key = import.meta.env.VITE_GIPHY_KEY;
 //pokemopn api stuff
 
 const P = new Pokedex;
@@ -50,9 +50,9 @@ function App() {
         let linkobj = {};
         //to get gif
         for(let i=0;i<19;i++){
-        //let li = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${pokemon[i]}`,{mode:"cors"});
-        //let lj = await li.json();
-        //console.log(lj.data.images.original.url);
+        let li = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${pokemon[i]}`,{mode:"cors"});
+        let lj = await li.json();
+        let alt = lj.data.images.original.url;
 
 
 
@@ -62,15 +62,15 @@ function App() {
         let x = await P.getPokemonByName(pokemon[i]);
           
           //stores in linkobj
-          linkobj = {...linkobj, [i] : {'name': x.name,'abilities' : x.abilities,'url': x.sprites.front_default}};
-          console.log(x.sprites.front_default);
+          linkobj = {...linkobj, [i] : {'name': x.name,'abilities' : x.abilities,'url': x.sprites.front_default, 'alt': alt}};
+          console.log(linkobj[i]['url'],linkobj[i]['alt']);
        
         }
 
 
         //stores stuff in state
 
-        setLinks(linkobj)
+        setLinks(linkobj);
 
         
 
