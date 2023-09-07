@@ -1,5 +1,6 @@
 //import { useState } from 'react'
 import Topbar from './components/Topbar'
+import PictureCard from './components/PictureCard'
 import './App.css'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -18,6 +19,8 @@ function App() {
   //links used to store stuff about pokemon and their images
   let [links,setLinks] = useState();
 
+  //array to store the card structures
+  
 
   //runs on mount to make api cALLS and store stuff in state
   useEffect(()=>{
@@ -46,10 +49,13 @@ function App() {
           "blastoise"
         ];
 
+        //obj to store details
 
         let linkobj = {};
+
+
         //to get gif
-        for(let i=0;i<19;i++){
+        for(let i=0;i<20;i++){
         let li = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=${key}&s=${pokemon[i]}`,{mode:"cors"});
         let lj = await li.json();
         let alt = lj.data.images.original.url;
@@ -61,16 +67,20 @@ function App() {
         //gets poke detAILS
         let x = await P.getPokemonByName(pokemon[i]);
           
-          //stores in linkobj
-          linkobj = {...linkobj, [i] : {'name': x.name,'abilities' : x.abilities,'url': x.sprites.front_default, 'alt': alt}};
-          console.log(linkobj[i]['url'],linkobj[i]['alt']);
+        //stores in linkobj
+        linkobj = {...linkobj, [i] : {'name': x.name,'abilities' : x.abilities,'url': x.sprites.front_default, 'alt': alt}};
+        
        
+        
+        
+        
         }
 
 
         //stores stuff in state
 
         setLinks(linkobj);
+        
 
         
 
@@ -81,14 +91,31 @@ function App() {
 
   },[]);
 
+let picar = [];
+if(links){
+  for(let i=0;i<19;i++){
+    picar.push(<PictureCard details={links[i]} key={i}/>)
+  }
+}
+  
+
+  
+
+
   
   return (
     <>
     <Topbar/>
     <div>Hi</div>
-
+   
 
     <h1>Pictures</h1>
+
+    {/*COmditional rendering*/ }
+    <div>
+      {links ? (picar) : <p>Loading........</p>}
+    </div>
+    
     </>
   )
 }
