@@ -8,6 +8,7 @@ export default function PictureCard(props){
 
         <div>CARD </div>
         <div>{name}</div>
+        <img src={props.details.alt}/>
 
         </>
     )

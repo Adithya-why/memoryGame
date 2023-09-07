@@ -91,6 +91,8 @@ function App() {
 
   },[]);
 
+
+//create the cards
 let picar = [];
 if(links){
   for(let i=0;i<19;i++){
