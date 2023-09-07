@@ -49,7 +49,7 @@ function App() {
   
 
   //runs on mount to make api cALLS and store stuff in state
-
+  //also runs if pokemon arry is changed
   useEffect(()=>{
     console.log('effect running')
     
@@ -103,12 +103,22 @@ function App() {
   },[pokemon]);
 
 
+  //function to randomize the screen and card order by chanmging the pokemon array
+
+  function randomize(){
+
+    let temp = pokemon;
+    temp.sort(()=>Math.random() - 0.5)
+    
+    setpokemon([...temp]);
+  }
+
 //create the cards
 let picar = [];
 
 if(links){
   for(let i=0;i<19;i++){
-    picar.push(<PictureCard details={links[i]} key={i}/>)
+    picar.push(<PictureCard details={links[i]} key={i} clickHandler={randomize}/>)
   }
  
 }
@@ -131,12 +141,7 @@ if(links){
       {links ? (picar) : <p>Loading........</p>}
     </div>
 
-    <button onClick={()=>{
-      let temp = pokemon;
-      temp.reverse();
-      console.log('hi');
-      setpokemon([...temp]);
-    }}>Shuffle</button>
+    <button onClick={randomize}>Shuffle</button>
     
     </>
   )
