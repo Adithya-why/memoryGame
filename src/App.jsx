@@ -15,6 +15,11 @@ const P = new Pokedex;
 
 
 function App() {
+  //score stuff
+
+
+  let [current,setcurrent] = useState(0);
+  let [best,setbest] = useState(0);
 
   //array to hold list of pokemon
   let [pokemon,setpokemon] = useState([
@@ -104,9 +109,10 @@ function App() {
 
 
   //function to randomize the screen and card order by chanmging the pokemon array
-
+  //function to deal with clicks
   function randomize(){
-
+    setcurrent(current+1);
+    console.log('increased');
     let temp = pokemon;
     temp.sort(()=>Math.random() - 0.5)
     
@@ -118,7 +124,7 @@ let picar = [];
 
 if(links){
   for(let i=0;i<19;i++){
-    picar.push(<PictureCard details={links[i]} key={i} clickHandler={randomize}/>)
+    picar.push(<PictureCard details={links[i]} key={crypto.randomUUID()} clickHandler={randomize}/>)
   }
  
 }
@@ -130,7 +136,7 @@ if(links){
   
   return (
     <>
-    <Topbar/>
+    <Topbar current={current} best={best}/>
     <div>Hi</div>
    
 
@@ -141,7 +147,7 @@ if(links){
       {links ? (picar) : <p>Loading........</p>}
     </div>
 
-    <button onClick={randomize}>Shuffle</button>
+    
     
     </>
   )
