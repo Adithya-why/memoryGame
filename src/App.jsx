@@ -224,7 +224,7 @@ if(links){
     
     </div>
       {/*makes card appear again after lost*/}
-    <button onClick={()=>{setll(false)}}>Restart</button>
+    <div className="bwr"><button onClick={()=>{setll(false)}}>Restart</button></div>
     
     </>
   )
