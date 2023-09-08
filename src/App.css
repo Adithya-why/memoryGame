@@ -1,3 +1,11 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Imbue:opsz@10..100&family=Inter&family=Rubik+Iso&display=swap');
+
+
+
+
+
+
 *{
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -6,14 +14,20 @@
 .cards{
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
-    
+    gap: 1rem;
     justify-items: center;
+
+
+    background-color: #1D5B79;
+    padding: 2rem;
+
+    border-radius: 10px;
     
 }
 
 
 .card{
-    outline: 1px solid brown;
+    outline: 5px solid orange;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -23,5 +37,38 @@
     height: 100%;
 
 
+    border-radius: 20px;
+
+
+    background-color: #79155B;
+}
+
+
+.card:hover{
+    background-color: brown;
+}
+
+
+.name{
+    font-family: 'Bungee Spice', cursive;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+}
+
+.abh{
     
+    font-family: 'Rubik Iso', cursive;
+    color: #F8DE22;
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+.ab{
+    font-family: 'Imbue', serif;
+    color: #F94C10;
+    text-transform: capitalize;
+}
+
+img{
+    border-radius: 10px;
 }
