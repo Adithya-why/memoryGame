@@ -13,6 +13,32 @@ const key = import.meta.env.VITE_GIPHY_KEY;
 //pokemopn api stuff
 const P = new Pokedex;
 
+//global poke array
+//not modified at any point
+//to make sure key of picturecard remains same after rerender
+let pokea = [
+  "pikachu",
+  "charizard",
+  "bulbasaur",
+  "squirtle",
+  "jigglypuff",
+  "mewtwo",
+  "gengar",
+  "snorlax",
+  "eevee",
+  "machamp",
+  "gyarados",
+  "alakazam",
+  "vaporeon",
+  "dragonite",
+  "golem",
+  "lapras",
+  "mew",
+  "pidgeot",
+  "raichu",
+  "blastoise"
+];
+
 
 function App() {
   //score stuff
@@ -112,7 +138,9 @@ function App() {
   //function to deal with clicks
   function randomize(){
     setcurrent(current+1);
-    console.log('increased');
+    if(current>=best){
+      setbest(current);
+    }
     let temp = pokemon;
     temp.sort(()=>Math.random() - 0.5)
     
@@ -124,7 +152,7 @@ let picar = [];
 
 if(links){
   for(let i=0;i<19;i++){
-    picar.push(<PictureCard details={links[i]} key={crypto.randomUUID()} clickHandler={randomize}/>)
+    picar.push(<PictureCard details={links[i]} key={pokea.indexOf(links[i].name)} clickHandler={randomize}/>)
   }
  
 }
