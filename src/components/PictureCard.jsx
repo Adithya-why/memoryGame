@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function PictureCard(props){
 
@@ -6,13 +6,23 @@ export default function PictureCard(props){
 
     let [clicks,setclicks] = useState(0);
 
+    //this eefct runs after every render
+    //checks if lost
+    useEffect(()=>{
+            if(clicks>1){
+               
+            }
+    })
 
     let name = props.details.name;
 
     return(
         <div className="card" onClick={()=>{
-            props.clickHandler();
             setclicks(clicks+1);
+            
+            
+            props.clickHandler();
+            
             }}>
 
 
