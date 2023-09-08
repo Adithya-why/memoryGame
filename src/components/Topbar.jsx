@@ -1,4 +1,4 @@
-import '../styles/topbar.css'
+
 
 
 export default function Topbar({ current, best }){
@@ -8,9 +8,11 @@ export default function Topbar({ current, best }){
 
     return(
         <div className='tb'>
-        <div>Memory Game</div>
-        <div>Score to beat {best}</div>
-        <div>Current Score {current} </div>
+        <div className="hd">Pokemon Memory Game</div>
+        <div className="wr">
+            <div>Score to beat:  <span>{best}</span></div>
+            <div>Current Score:  <span>{current}</span> </div>
+        </div>
         </div>
     )
 }

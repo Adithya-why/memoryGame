@@ -200,10 +200,10 @@ if(links){
   return (
     <>
     <Topbar current={current} best={best}/>
-    <div>Hi</div>
+    
    
 
-    <h1>Pictures</h1>
+    <p className='pic'>Test your memory by clicking on an unclicked pokemon and get points, GIFS are used for confusion and will not be accurate </p>
 
     {/*COmditional rendering*/ }
     <div className='cards' style={{pointerEvents: disvar}}>
