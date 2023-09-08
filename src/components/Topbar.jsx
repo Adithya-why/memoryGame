@@ -9,7 +9,7 @@ export default function Topbar({ current, best }){
     return(
         <div className='tb'>
         <div>Memory Game</div>
-        <div>Best score {best}</div>
+        <div>Score to beat {best}</div>
         <div>Current Score {current} </div>
         </div>
     )

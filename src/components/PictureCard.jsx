@@ -10,7 +10,9 @@ export default function PictureCard(props){
     //checks if lost
     useEffect(()=>{
             if(clicks>1){
-               
+               console.log('lost');
+               props.lost();
+
             }
     })
 
@@ -18,10 +20,11 @@ export default function PictureCard(props){
 
     return(
         <div className="card" onClick={()=>{
-            setclicks(clicks+1);
+            
             
             
             props.clickHandler();
+            setclicks(clicks+1);
             
             }}>
 
