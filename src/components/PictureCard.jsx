@@ -17,6 +17,7 @@ export default function PictureCard(props){
     })
 
     let name = props.details.name;
+    let abilities = props.details.abilities;
 
     return(
         <div className="card" onClick={()=>{
@@ -29,9 +30,13 @@ export default function PictureCard(props){
             }}>
 
 
-        <div>CARD </div>
-        <div>{name}</div>
-        <img src={props.details.alt} width={100} height={100} />
+        <div className="name">{name}</div>
+       
+        <img src={props.details.alt} width={100} height={100}/>
+        
+        <div className="abh">Abilities</div>
+        
+        {abilities.map((ab)=><div key={crypto.randomUUID()}className="ab" >{ab.ability.name}</div>)}
 
         </div>
     )
